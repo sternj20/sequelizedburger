@@ -1,0 +1,41 @@
+<div class="jumbotron">
+  <div class="container header">
+    <h1>Eat a burger!</h1>
+    <img class = "headerPic" src ="../assets/img/burger.jpg">
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class = "burgersToEat col-md-6">
+      <h2>You can eat these burgers</h2>
+      <ul>
+        {{#each burgers}}
+        <li>
+          {{this.burger_name}}
+          <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <button type = "submit">Devour it</button>
+          </form>
+        </li>
+        {{/each}}
+      </ul>
+      <form method ="post" action="/">
+        <input type="text" name="burger_name">
+        <button type="submit">Add burger</button>
+      </form>
+    </div>
+
+    <div class = "devouredBurgers col-md-6">
+      <h2>These burgers have all been ate</h2>
+      <ul>
+        {{#each devouredBurgers}}
+        <li>
+          {{this.burger_name}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
